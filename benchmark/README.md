@@ -1,0 +1,3 @@
+## Folder Description
+
+This folder stores data lake tables for preprocessing (offline) phase and query tables for Query phase. Reorganize this folder as per your use. Currently, it contains three subfolders for Labeled, Real and TUS Benchmark. Both folders contain their respective query and dataLake subfolders with some sample tables. Please visit [this link](https://drive.google.com/drive/folders/18aYj1ZwXnp4OLIsmx9khqZD0oblMp8cs?usp=sharing) to download full Real Data Lake Benchmark, Labeled Benchmark and relabeled TUS Benchmark. The original TUS benchmark is available at [https://github.com/RJMillerLab/table-union-search-benchmark](https://github.com/RJMillerLab/table-union-search-benchmark).
