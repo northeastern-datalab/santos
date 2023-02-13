@@ -1,6 +1,8 @@
 # SANTOS: Relationship-based Semantic Table Union Search
 
-Aamod Khatiwada, Grace Fan, Roee Shraga, Zixuan Chen, Wolfgang Gatterbauer, Renée J. Miller, Mirek Riedewald
+This repository contains the implementation of our paper [SANTOS: Relationship-based Semantic Table Union Search](https://arxiv.org/abs/2209.13589), appearing at SIGMOD 2023).
+
+Authors: Aamod Khatiwada, Grace Fan, Roee Shraga, Zixuan Chen, Wolfgang Gatterbauer, Renée J. Miller, Mirek Riedewald
 
 ## Abstract
 
@@ -57,3 +59,17 @@ Please visit [this link](https://drive.google.com/drive/folders/18aYj1ZwXnp4OLIs
 5. Run [data_lake_processing_synthesized_kb.py](codes/data_lake_processing_synthesized_kb.py) to create synthesized type dictionary, relationship dictionary and synthesized inverted index.
 
 6. Run [query_santos.py](codes/query_santos.py) to get top-k SANTOS unionable table search results.
+
+## Citation
+
+```
+
+
+@inproceedings{2023khatiwadasantos,
+title = {SANTOS: Relationship-based Semantic Table Union Search},
+author={Khatiwada, Aamod and Fan, Grace and Shraga, Roee and Chen, Zixuan and Gatterbauer, Wolfgang and Miller, Ren{\'e}e J and Riedewald, Mirek},
+year = {2023},
+publisher = {ACM},
+booktitle = {SIGMOD Conference 2023},
+}
+```
