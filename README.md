@@ -61,10 +61,7 @@ Please visit [this link](https://drive.google.com/drive/folders/18aYj1ZwXnp4OLIs
 6. Run [query_santos.py](codes/query_santos.py) to get top-k SANTOS unionable table search results.
 
 ## Citation
-
 ```
-
-
 @inproceedings{2023khatiwadasantos,
 title = {SANTOS: Relationship-based Semantic Table Union Search},
 author={Khatiwada, Aamod and Fan, Grace and Shraga, Roee and Chen, Zixuan and Gatterbauer, Wolfgang and Miller, Ren{\'e}e J and Riedewald, Mirek},
