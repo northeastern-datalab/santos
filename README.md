@@ -1,6 +1,6 @@
 # SANTOS: Relationship-based Semantic Table Union Search
 
-This repository contains the implementation of our paper [SANTOS: Relationship-based Semantic Table Union Search](https://arxiv.org/abs/2209.13589), appearing at SIGMOD 2023).
+This repository contains the implementation of our paper [SANTOS: Relationship-based Semantic Table Union Search](https://arxiv.org/abs/2209.13589), appearing at SIGMOD 2023.
 
 Authors: Aamod Khatiwada, Grace Fan, Roee Shraga, Zixuan Chen, Wolfgang Gatterbauer, Renée J. Miller, Mirek Riedewald
 
