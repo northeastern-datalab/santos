@@ -7,6 +7,7 @@ import pandas as pd
 import generalFunctions as genFunc
 import expandSearch as expand
 import csv
+import os
 
 #utility function used to convert dictionary to lists
 def convertDictToList(dictionary):
@@ -184,7 +185,7 @@ if __name__ == "__main__":
     
     which_benchmark = 0
     while which_benchmark != 1 and which_benchmark != 2 and which_benchmark != 3 and which_benchmark != 4:
-      print("Press 1 for TUS Benchmark, 2 for Labeled benchmark and 3 full tables.") #labeled benchmark is referred as santos benchmark in the code
+      print("Press 1 for TUS Benchmark, 2 for SANTOS (small) benchmark and 3 for SANTOS (large) benchmark.") #small benchmark is referred as santos benchmark in the code
       which_benchmark = int(input())
     if which_benchmark == 1:
         current_benchmark = "tus"
@@ -238,7 +239,7 @@ if __name__ == "__main__":
             input_table = pd.read_csv(table, encoding='latin1', on_bad_lines="skip")
             print("------------------------------")
             print("Processing table :", tab_id)
-            table_name = table.rsplit("/",1)[-1]
+            table_name = table.rsplit(os.sep,1)[-1]
             print("Table path:", table)
             individual_time_start = time.time_ns()
             relation_tuple_bag_of_words, entity_finding_relations, relation_dependencies, relation_dictionary = computeRelationSemantics(input_table, tab_id, label_dict, fact_dict)

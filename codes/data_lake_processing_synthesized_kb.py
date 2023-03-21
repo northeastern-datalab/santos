@@ -8,6 +8,7 @@ import pickle #version 4
 import pandas as pd
 import generalFunctions as genFunc
 import sys
+import os
 
 def convertSynthDictToList(synthKB):
     for value in synthKB:
@@ -37,7 +38,7 @@ def createRelationSemanticsLookupTable(filenames, FDDs):
         try:
             inputTable = pd.read_csv(file, encoding='latin1')
             total_cols = inputTable.shape[1]
-            fdKey = file.rsplit("/", 1)[-1] #extract the name of table. Eg. extract "exampleTable.csv" from "../input/dataLakeTables/exampleTable.csv"
+            fdKey = file.rsplit(os.sep, 1)[-1] #extract the name of table. Eg. extract "exampleTable.csv" from "../input/dataLakeTables/exampleTable.csv"
             currentTableFDs = []
             print("Table recently visited for relation lookup creation:", fdKey)
             print("table id:", tab_id)
@@ -95,7 +96,7 @@ def createColumnSemanticsLookupTable(filenames, FDDs):
         try:
             inputTable = pd.read_csv(file, encoding='latin1', warn_bad_lines=True, error_bad_lines=False)
             col_id = 0
-            table_name = file.rsplit("/", 1)[-1] 
+            table_name = file.rsplit(os.sep, 1)[-1] 
             currentTableFDs = []
             print("Table recently visited for type lookup creation:", table_name)
             print("table id:", tab_id)
@@ -151,7 +152,7 @@ def createColumnSemanticsSynthKB(lookupTable, filenames, FDDs):
         try:
             inputTable = pd.read_csv(file, encoding='latin1', warn_bad_lines=True, error_bad_lines=False)
             col_id = 0
-            table_name = file.rsplit("/", 1)[-1] #extract the name of table. Eg. extract "exampleTable.csv" from "../input/dataLakeTables/exampleTable.csv"
+            table_name = file.rsplit(os.sep, 1)[-1] #extract the name of table. Eg. extract "exampleTable.csv" from "../input/dataLakeTables/exampleTable.csv"
             #fdKey = genFunc.cleanTableName(fdKey)
             currentTableFDs = []
             print("Table recently visited for type KB creation:", table_name)
@@ -232,7 +233,7 @@ def createRelationSemanticsSynthKB(lookupTable, filenames, FDDs):
             #print(inputTable)
             total_cols = inputTable.shape[1]
             #total_rows = inputTable.shape[0]
-            table_name = file.rsplit("/",1)[-1] #extract the name of table. Eg. extract "exampleTable.csv" from "../input/dataLakeTables/exampleTable.csv"
+            table_name = file.rsplit(os.sep,1)[-1] #extract the name of table. Eg. extract "exampleTable.csv" from "../input/dataLakeTables/exampleTable.csv"
             #fdKey = genFunc.cleanTableName(fdKey)
             currentTableFDs = []
             print("Computing relation semantics for table", table_name)
@@ -320,7 +321,7 @@ def createRelationSemanticsSynthKB(lookupTable, filenames, FDDs):
 if __name__ == "__main__":
     which_benchmark = 0
     while which_benchmark != 1 and which_benchmark != 2 and which_benchmark != 3 and which_benchmark != 4:
-      print("Press 1 for TUS Benchmark, 2 for SANTOS benchmark, 3 for full tables.")
+      print("Press 1 for TUS Benchmark, 2 for SANTOS (small) benchmark and 3 for SANTOS (large) benchmark.")
       which_benchmark = int(input())
     if which_benchmark == 1:
         current_benchmark = "tus"

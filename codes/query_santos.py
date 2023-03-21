@@ -7,6 +7,7 @@ import pandas as pd
 import csv
 import glob
 import time
+import os
 import os.path
 from pathlib import Path
 import sys
@@ -21,7 +22,7 @@ def getAccuracyResult(sortedTableList, expected_tables, k):
     tp = 0
     fp = 0
     for key in sortedTableList:
-        data_lake_table = key[0].split("/")[-1]
+        data_lake_table = key[0].split(os.sep)[-1]
         if data_lake_table in expected_tables:
             tp = tp+1
         else:
@@ -325,7 +326,7 @@ def computeColumnSemantics(input_table, subject_index, LABEL_DICT, TYPE_DICT, CL
 if __name__ == "__main__":
     which_benchmark = 0
     while which_benchmark != 1 and which_benchmark != 2 and which_benchmark != 3:
-      print("Press 1 for TUS Benchmark, 2 for Labeled benchmark and 3 for full tables.")
+      print("Press 1 for TUS Benchmark, 2 for SANTOS (small) benchmark and 3 for SANTOS (large) benchmark.")
       which_benchmark = int(input())
     map_k = 20
     if which_benchmark == 1:
@@ -337,17 +338,8 @@ if __name__ == "__main__":
     else:
     	current_benchmark = "real_tables"
     
-    which_mode = 0
-    while which_mode != 1 and which_mode != 2 and which_mode != 3:
-      print("Press 1 for Santos KB only, 2 for SANTOS synthesized KB only, 3 for SANTOS full.")
-      which_mode = int(input())
-    
-    if which_mode == 1:
-        current_mode = "kb"
-    elif which_mode == 2:
-        current_mode = "synth"   
-    else:
-        current_mode = "full" 
+    which_mode = 3
+    current_mode = "full"
     benchmarkLoadStart = time.time()
 
     #load the YAGO KB from dictionary files and data lake table names
@@ -422,12 +414,9 @@ if __name__ == "__main__":
         
     #load the union groundtruth and subject columns
     ground_truth = genFunc.loadDictionaryFromPickleFile(GROUND_TRUTH_PATH)
-    ground_truth['players.csv'] = ['players.csv']
     subject_col = genFunc.loadDictionaryFromPickleFile(SUBJECT_COL_PATH)
-    subject_col['players'] = 0
     benchmarkLoadEnd = time.time()
     difference = int(benchmarkLoadEnd - benchmarkLoadStart)
-    total_relationship_hits = {}
     print("Time taken to load benchmarks in seconds:",difference)
     print("-----------------------------------------\n")
     scoring_function = 2
@@ -445,7 +434,7 @@ if __name__ == "__main__":
     total_queries = 1
     all_query_time = {}
     for table in query_table_file_name:
-        table_name = table.rsplit("/", 1)[-1]
+        table_name = table.rsplit(os.sep, 1)[-1]
         print("Processing Table number:", total_queries)
         print("Table Name:", table_name)
         total_queries += 1
@@ -469,8 +458,6 @@ if __name__ == "__main__":
         subject_index = subject_col[stemmed_file_name]
         if which_mode == 1 or which_mode == 3:
             relation_tuple_bag_of_words, entity_finding_relations, relation_dependencies, relation_dictionary, recent_hits = computeRelationSemantics(input_table, subject_index, label_dict, fact_dict)
-            for sts in recent_hits:
-                total_relationship_hits[sts] = recent_hits[sts]
             column_tuple_bag_of_words, column_dictionary, subject_semantics = computeColumnSemantics(input_table, subject_index, label_dict, type_dict, class_dict, entity_finding_relations, scoring_function)
         else:
             relation_tuple_bag_of_words = []
@@ -706,7 +693,7 @@ if __name__ == "__main__":
         temp_false_results = []
         enum = 0
         for key in sortedTableList:
-            data_lake_table = key[0].split("/")[-1]
+            data_lake_table = key[0].split(os.sep)[-1]
             if enum <5:
                 print(data_lake_table, key[1])
             enum +=1
@@ -730,41 +717,11 @@ if __name__ == "__main__":
         print("Current True positives:", dtp)
         print("Current False Positives:", dfp)
         print("Current False Negative:", totalPositive - dtp)
-        for i in range(0, 8):
-            tp, fp = getAccuracyResult(sortedTableList, expected_tables, value_of_k[i])
-            truePositive[i] = truePositive[i] + tp
-            falsePositive[i] = falsePositive[i] + fp
-            if len(expected_tables)>= map_k:
-              current_precision = tp / (tp + fp)
-              avg_pr[i].append(current_precision)
-              current_recall = tp / (totalPositive)
-              avg_rc[i].append(current_recall)
-              falseNegative[i] = falseNegative[i] + (totalPositive - tp)
-        outputList = []
-    print("\n----------------------------")
-    print("----------------------------")
    
     computation_end_time = time.time()
     difference = int(computation_end_time - computation_start_time)
     print("Time taken to process all query tables and print the results in seconds:", difference)
 genFunc.saveDictionaryAsPickleFile(map_output_dict, FINAL_RESULT_PICKLE_PATH)
-with open(MAP_PATH,"w",newline='', encoding="utf-8") as f:
-      w = csv.writer(f)
-      w.writerow(["query_table","result_table"])
-      for k, v in map_output_dict.items():
-        counter = 1
-        for value in v:
-            w.writerow([k,value])
-            counter += 1
-            if counter > 20:
-                break
-
-
-with open(QUERY_TIME_PATH,"w",newline='', encoding="utf-8") as f:
-      w = csv.writer(f)
-      w.writerow(["query_table","query_time"])
-      for k, v in all_query_time.items():
-        w.writerow([k,v])
 
 
 if which_benchmark != 3: #manual verification for real data lake benchmark
