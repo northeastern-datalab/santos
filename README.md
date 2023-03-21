@@ -22,7 +22,7 @@ Existing techniques for unionable table search define unionability using metadat
 
 ## Benchmark
 
-Please visit [this link](https://drive.google.com/drive/folders/18aYj1ZwXnp4OLIsmx9khqZD0oblMp8cs?usp=sharing) to download Real Data Lake Benchmark (aka SANTOS Large), Labeled Benchmark (aka SANTOS Small) and relabeled TUS Benchmark. The original TUS benchmark is available at [https://github.com/RJMillerLab/table-union-search-benchmark](https://github.com/RJMillerLab/table-union-search-benchmark).
+Please visit [this link](https://zenodo.org/record/7758091) to download Real Data Lake Benchmark (aka SANTOS Large), Labeled Benchmark (aka SANTOS Small) and relabeled TUS Benchmark. The original TUS benchmark is available at [https://github.com/RJMillerLab/table-union-search-benchmark](https://github.com/RJMillerLab/table-union-search-benchmark).
 
 ## Setup
 
