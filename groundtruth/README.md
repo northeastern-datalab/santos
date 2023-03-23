@@ -4,7 +4,7 @@ This folder contains the ground truths and functional dependencies (preprocessin
 
 ## Generating Ground truth files for New Benchmark
 
-To create ground truth files, first you need to manually label (i) the intent columns of each query table and (ii) the set of data lake tables that are unionable with the query table. Along with the [benchmarks](https://zenodo.org/record/7758091) we release in Zenodo, you can find csv files that contains labeling of TUS benchmark (/TUS_benchmark_relabeled_groundtruth.csv) and SANTOS Small Benchmark (santos_benchmark/santos_small_benchmark_groundtruth.csv). Once you have these information, create two pickle files as described below and upload them to this folder. Note that you should also upload the benchmark tables to [benchmark](../benchmark/) folder. Find details in [benchmark](../benchmark/) folder. 
+To create ground truth files, first you need to manually label (i) the intent columns of each query table and (ii) the set of data lake tables that are unionable with the query table. Along with the [benchmarks](https://zenodo.org/record/7758091) we release in Zenodo, you can find csv files that contains labeling of TUS benchmark (/TUS_benchmark_relabeled_groundtruth.csv) and SANTOS Small Benchmark (santos_benchmark/santos_small_benchmark_groundtruth.csv). Once you have these information, create two pickle files as described below and upload them to this folder. Note that you should also upload the benchmark tables. Find details in [benchmark](../benchmark/) folder. 
 
 ### Creating ground truth pickle files 
 
