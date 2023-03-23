@@ -56,7 +56,7 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
 
 2. Download, unzip and upload [YAGO](https://yago-knowledge.org/downloads/yago-4) knowledge base to [yago/yago_original](yago/yago_original) folder.
 
-3. Run [preprocess_yago.py](codes/preprocess_yago.py) to create entity dictionary, type dictionary, inheritance dictionary and relationship dictionary. Then run [Yago_type_counter.py](codes/Yago_type_counter.py), [Yago_subclass_extractor.py](codes/Yago_subclass_extractor.py) and [Yago_subclass_score.py](codes/Yago_subclass_score.py) one after another to generate the type penalization scores. The created dictionaries are stored in [yago/yago_pickle](yago/yago_pickle/). You may delete the downloaded yago files after this step and we do not need orignal yago in [yago/yago_original](yago/yago_original) anymore.
+3. Run [preprocess_yago.py](codes/preprocess_yago.py) to create entity dictionary, type dictionary, inheritance dictionary and relationship dictionary. Then run [Yago_type_counter.py](codes/Yago_type_counter.py), [Yago_subclass_extractor.py](codes/Yago_subclass_extractor.py) and [Yago_subclass_score.py](codes/Yago_subclass_score.py) one after another to generate the type penalization scores. The created dictionaries are stored in [yago/yago_pickle](yago/yago_pickle/). You may delete the downloaded yago files after this step as we do not need orignal yago in [yago/yago_original](yago/yago_original) anymore.
 
 4. Run [data_lake_processing_yago.py](codes/data_lake_processing_yago.py) to create yago inverted index.
 
