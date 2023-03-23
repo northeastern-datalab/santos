@@ -52,7 +52,7 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
     ```
     cd benchmark && zenodo_get 7758091 && rm -r santos_benchmark && unzip santos_benchmark && cd santos_benchmark && rm *.csv && cd .. && rm -r real_tables_benchmark && unzip real_data_lake_benchmark && cd real_data_lake_benchmark && rm *.csv && cd .. && mv real_data_lake_benchmark real_tables_benchmark  cd ..
     ```
-For TUS benchmark, download them from (this page)[(https://github.com/RJMillerLab/table-union-search-benchmark)] and upload them to their respective subfolders.
+    For TUS benchmark, download them from [this page](https://github.com/RJMillerLab/table-union-search-benchmark) and upload them to their respective subfolders.
 
 2. Download, unzip and upload [YAGO](https://yago-knowledge.org/downloads/yago-4) knowledge base to [yago/yago_original](yago/yago_original) folder.
 
