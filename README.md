@@ -10,7 +10,7 @@ Existing techniques for unionable table search define unionability using metadat
 
 ## Repository Organization
 
-- **benchmark** folder contains subfolders for Labeled Benchmark, Real Benchmark and TUS Benchmark.
+- **benchmark** folder contains subfolders for SANTOS Small Benchmark (santos_benchmark), SANTOS Large Benchmark (real_data_lake_benchmark) and TUS Benchmark (tus_benchmark).
 - **codes** folder contains SANTOS source codes for preprocessing yago, creating synthesized knowledge base, preprocessing data lake tables using yago and querying top-k SANTOS unionable tables.
 - **groundtruth** folder contains the groundtruth files used to evaluate precision and recall.
 - **hashmap** folder contains indexes built during the preprocessing phase.
@@ -22,7 +22,7 @@ Existing techniques for unionable table search define unionability using metadat
 
 ## Benchmark
 
-Please visit [this link](https://zenodo.org/record/7758091) to download Real Data Lake Benchmark (aka SANTOS Large), Labeled Benchmark (aka SANTOS Small) and relabeled TUS Benchmark. The original TUS benchmark is available at [https://github.com/RJMillerLab/table-union-search-benchmark](https://github.com/RJMillerLab/table-union-search-benchmark).
+Please visit [this link](https://zenodo.org/record/7758091) to download Real Data Lake Benchmark (aka SANTOS Large), SANTOS Benchmark (aka SANTOS Small) and relabeled TUS Benchmark. The original TUS benchmark is available at [https://github.com/RJMillerLab/table-union-search-benchmark](https://github.com/RJMillerLab/table-union-search-benchmark).
 
 ## Setup
 
@@ -48,11 +48,15 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
 
 ## Reproducibility
 
-1. Download benchmark tables from [this link](https://drive.google.com/drive/folders/18aYj1ZwXnp4OLIsmx9khqZD0oblMp8cs?usp=sharing) and upload them to their respective subfolders inside [benchmark](benchmark/) folder.
+1. Download benchmark tables and upload them to their respective subfolders inside [benchmark](benchmark/) folder. You can download both SANTOS benchmarks manually from (zenodo)[https://zenodo.org/record/7758091]. For convenience, you can also run the following commands on your terminal which is based on [zenodo_get](https://gitlab.com/dvolgyes/zenodo_get) package. The command automatically downloads SANTOS Large and SANTOS Small benchmarks, uncompresses them and replace placeholder folders with the folders having tables. As the first command takes you to benchmark folder before downloading the benchmarks, make sure that you are in home of the repo. 
+```
+cd benchmark && zenodo_get 7758091 && rm -r santos_benchmark && unzip santos_benchmark && cd santos_benchmark && rm *.csv && cd .. && rm -r real_tables_benchmark && unzip real_data_lake_benchmark && cd real_data_lake_benchmark && rm *.csv && cd .. && mv real_data_lake_benchmark real_tables_benchmark  cd ..
+```
+For TUS benchmark, download them from (this page)[(https://github.com/RJMillerLab/table-union-search-benchmark)] and upload them to their respective subfolders.
 
 2. Download, unzip and upload [YAGO](https://yago-knowledge.org/downloads/yago-4) knowledge base to [yago/yago_original](yago/yago_original) folder.
 
-3. Run [preprocess_yago.py](codes/preprocess_yago.py) to create entity dictionary, type dictionary, inheritance dictionary and relationship dictionary. Then run [Yago_type_counter.py](codes/Yago_type_counter.py), [Yago_subclass_extractor.py](codes/Yago_subclass_extractor.py) and [Yago_subclass_score.py](codes/Yago_subclass_score.py) one after another to generate the type penalization scores. The created dictionaries are stored in [yago/yago_pickle](yago/yago_pickle/).
+3. Run [preprocess_yago.py](codes/preprocess_yago.py) to create entity dictionary, type dictionary, inheritance dictionary and relationship dictionary. Then run [Yago_type_counter.py](codes/Yago_type_counter.py), [Yago_subclass_extractor.py](codes/Yago_subclass_extractor.py) and [Yago_subclass_score.py](codes/Yago_subclass_score.py) one after another to generate the type penalization scores. The created dictionaries are stored in [yago/yago_pickle](yago/yago_pickle/). You may delete the downloaded yago files after this step and we do not need orignal yago in [yago/yago_original](yago/yago_original) anymore.
 
 4. Run [data_lake_processing_yago.py](codes/data_lake_processing_yago.py) to create yago inverted index.
 
@@ -61,6 +65,7 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
 6. Run [query_santos.py](codes/query_santos.py) to get top-k SANTOS unionable table search results.
 
 ## Citation
+
 ```
 @inproceedings{2023khatiwadasantos,
 title = {SANTOS: Relationship-based Semantic Table Union Search},
