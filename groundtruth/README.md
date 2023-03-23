@@ -15,11 +15,11 @@ To create ground truth files, first you need to manually label (i) the intent co
         'cihr_co-applicant_b': 5
     }
     ```
-2. [Benchmark_Name]UnionBenchmark.pickle file is a python dictionary that constains the name of query tables as key and the list of their unionable tables as value. For example for a benchmark named "test" having a query table "data_mill_a.csv" with two unionable tables "data_mill_0.csv" and "data_mill_1.csv" and another query table "cihr_co-applicant_b.csv" with three unionable tables "cihr_co-applicant_1.csv", "cihr_co-applicant_2.csv" and "cihr_co-applicant_3.csv", we create a pickle file named testIntentColumnBenchmark.pickle that persists a python dictionary as follows:
+2. [Benchmark_Name]UnionBenchmark.pickle file is a python dictionary that contains the name of query tables as key and the list of their unionable tables as value. For example for a benchmark named "test" having a query table "data_mill_a.csv" with two unionable tables "data_mill_0.csv" and "data_mill_1.csv" and another query table "cihr_co-applicant_b.csv" with three unionable tables "cihr_co-applicant_1.csv", "cihr_co-applicant_2.csv" and "cihr_co-applicant_3.csv", we create a pickle file named testIntentColumnBenchmark.pickle that persists a python dictionary as follows:
     ```
     {
         'data_mill_a.csv': ['data_mill_0.csv', 'data_mill_1.csv'],
-        'cihr_co-applicant_b.csv': ['cihr_co-applicant_1.csv', 'cihr_co-applicant_2.csv']
+        'cihr_co-applicant_b.csv': ['cihr_co-applicant_1.csv', 'cihr_co-applicant_2.csv', 'cihr_co-applicant_3.csv']
     }
     ```
 
