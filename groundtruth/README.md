@@ -8,7 +8,7 @@ To create ground truth files, first you need to manually label (i) the intent co
 
 ### Creating ground truth pickle files 
 
-1. [Benchmark_Name]IntentColumnBenchmark.pickle file is a python dictionary that contains the name of query tables as key and the index of intent column as value. For example for a benchmark named "test" having two query tables data_mill_a.csv and cihr_co-applicant_b.csv, we create a pickle file named testIntentColumnBenchmark.pickle that persists a python dictionary as follows:
+1. [Benchmark_Name]IntentColumnBenchmark.pickle file is a python dictionary that contains the name of query tables as key and the index of intent column as value. For example for a benchmark named "test" having two query tables data_mill_a.csv (intent column index = 0) and cihr_co-applicant_b.csv (intent column index = 1), we create a pickle file named testIntentColumnBenchmark.pickle that persists a python dictionary as follows:
     ```
     {   
         'data_mill_a': 0,
