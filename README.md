@@ -49,9 +49,9 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
 ## Reproducibility
 
 1. Download benchmark tables and upload them to their respective subfolders inside [benchmark](benchmark/) folder. You can download both SANTOS benchmarks manually from [zenodo](https://zenodo.org/record/7758091). For convenience, you can also run the following commands on your terminal which is based on [zenodo_get](https://gitlab.com/dvolgyes/zenodo_get) package. The command automatically downloads SANTOS Large and SANTOS Small benchmarks, uncompresses them and replace placeholder folders with the folders having tables. As the first command takes you to benchmark folder before downloading the benchmarks, make sure that you are in home of the repo. 
-```
-cd benchmark && zenodo_get 7758091 && rm -r santos_benchmark && unzip santos_benchmark && cd santos_benchmark && rm *.csv && cd .. && rm -r real_tables_benchmark && unzip real_data_lake_benchmark && cd real_data_lake_benchmark && rm *.csv && cd .. && mv real_data_lake_benchmark real_tables_benchmark  cd ..
-```
+    ```
+    cd benchmark && zenodo_get 7758091 && rm -r santos_benchmark && unzip santos_benchmark && cd santos_benchmark && rm *.csv && cd .. && rm -r real_tables_benchmark && unzip real_data_lake_benchmark && cd real_data_lake_benchmark && rm *.csv && cd .. && mv real_data_lake_benchmark real_tables_benchmark  cd ..
+    ```
 For TUS benchmark, download them from (this page)[(https://github.com/RJMillerLab/table-union-search-benchmark)] and upload them to their respective subfolders.
 
 2. Download, unzip and upload [YAGO](https://yago-knowledge.org/downloads/yago-4) knowledge base to [yago/yago_original](yago/yago_original) folder.
