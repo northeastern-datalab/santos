@@ -1,6 +1,6 @@
 # SANTOS: Relationship-based Semantic Table Union Search
 
-This repository contains the implementation of our paper [SANTOS: Relationship-based Semantic Table Union Search](https://arxiv.org/abs/2209.13589), appearing at [SIGMOD 2023](https://2023.sigmod.org).
+This repository contains the implementation of our paper [SANTOS: Relationship-based Semantic Table Union Search](https://dl.acm.org/doi/10.1145/3588689), appeared at [SIGMOD 2023](https://2023.sigmod.org).
 
 Authors: Aamod Khatiwada, Grace Fan, Roee Shraga, Zixuan Chen, Wolfgang Gatterbauer, Renée J. Miller, Mirek Riedewald
 
@@ -48,6 +48,8 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
 
 ## Reproducibility
 
+If you want to run SANTOS interactively on SANTOS benchmark, you can check our Demo: [DIALITE](https://tinyurl.com/dialite-sigmod), which is available as a web API. DIALITE is a table discovery and integration pipeline that uses SANTOS for disovering unionable tables from data lakes. For reproducing SANTOS on your machine, please follow the following steps.
+
 1. Download benchmark tables and upload them to their respective subfolders inside [benchmark](benchmark/) folder. You can download both SANTOS benchmarks manually from [zenodo](https://zenodo.org/record/7758091). For convenience, you can also run the following commands on your terminal that are based on [zenodo_get](https://gitlab.com/dvolgyes/zenodo_get) package. The commands automatically download SANTOS Large and SANTOS Small benchmarks, uncompress them and replace placeholder folders with the folders having tables. As the first command takes you to benchmark folder before downloading the benchmarks, make sure that you are in home of the repo. 
     ```
     cd benchmark && zenodo_get 7758091 && rm -r santos_benchmark && unzip santos_benchmark && cd santos_benchmark && rm *.csv && cd .. && rm -r real_tables_benchmark && unzip real_data_lake_benchmark && cd real_data_lake_benchmark && rm *.csv && cd .. && mv real_data_lake_benchmark real_tables_benchmark && rm *.zip && cd ..
@@ -67,11 +69,24 @@ Please visit [this link](https://zenodo.org/record/7758091) to download Real Dat
 ## Citation
 
 ```
-@inproceedings{2023khatiwadasantos,
-title = {SANTOS: Relationship-based Semantic Table Union Search},
-author={Khatiwada, Aamod and Fan, Grace and Shraga, Roee and Chen, Zixuan and Gatterbauer, Wolfgang and Miller, Ren{\'e}e J and Riedewald, Mirek},
-year = {2023},
-publisher = {ACM},
-booktitle = {SIGMOD Conference 2023},
+@article{DBLP:journals/pacmmod/KhatiwadaFSCGMR23,
+  author       = {Aamod Khatiwada and
+                  Grace Fan and
+                  Roee Shraga and
+                  Zixuan Chen and
+                  Wolfgang Gatterbauer and
+                  Ren{\'{e}}e J. Miller and
+                  Mirek Riedewald},
+  title        = {{SANTOS:} Relationship-based Semantic Table Union Search},
+  journal      = {Proc. {ACM} Manag. Data},
+  volume       = {1},
+  number       = {1},
+  pages        = {9:1--9:25},
+  year         = {2023},
+  url          = {https://doi.org/10.1145/3588689},
+  doi          = {10.1145/3588689},
+  timestamp    = {Thu, 15 Jun 2023 21:57:48 +0200},
+  biburl       = {https://dblp.org/rec/journals/pacmmod/KhatiwadaFSCGMR23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 ```

@@ -99,8 +99,8 @@ def computeSynthRelation(inputTable, subjectIndex, synthKB):
                     #find relation semantics for each value pairs of subjectIndex and j
                     for k in range(0,projectedRowsNum):
                         #extract subject and object
-                        sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k][0]).lower())
-                        obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k][1]).lower())
+                        sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k,0]).lower())
+                        obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k,1]).lower())
                         subNull = genFunc.checkIfNullString(sub)
                         objNull = genFunc.checkIfNullString(obj)
                         if subNull != 0 and objNull != 0:
@@ -173,8 +173,8 @@ def computeRelationSemantics(input_table, tab_id, LABEL_DICT, FACT_DICT):
                     #print(k)
                     #extract subject and object
                     found_relation = 0
-                    subject_value = genFunc.preprocessString(str(column_pairs.iloc[k][0]).lower())
-                    object_value = genFunc.preprocessString(str(column_pairs.iloc[k][1]).lower())
+                    subject_value = genFunc.preprocessString(str(column_pairs.iloc[k,0]).lower())
+                    object_value = genFunc.preprocessString(str(column_pairs.iloc[k,1]).lower())
                     is_sub_null = genFunc.checkIfNullString(subject_value)
                     is_obj_null = genFunc.checkIfNullString(object_value)
                     if is_sub_null != 0:

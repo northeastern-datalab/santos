@@ -46,8 +46,8 @@ def computeRelationSemantics(input_table, tab_id, LABEL_DICT, FACT_DICT):
                     #print(k)
                     #extract subject and object
                     found_relation = 0
-                    subject_value = genFunc.preprocessString(str(column_pairs.iloc[k][0]).lower())
-                    object_value = genFunc.preprocessString(str(column_pairs.iloc[k][1]).lower())
+                    subject_value = genFunc.preprocessString(str(column_pairs.iloc[k,0]).lower())
+                    object_value = genFunc.preprocessString(str(column_pairs.iloc[k,1]).lower())
                     is_sub_null = genFunc.checkIfNullString(subject_value)
                     is_obj_null = genFunc.checkIfNullString(object_value)
                     if is_sub_null != 0:
@@ -165,7 +165,7 @@ def computeColumnSemantics(input_table, tab_id, LABEL_DICT, TYPE_DICT, CLASS_DIC
             all_top_types = [v for v in sorted(all_found_types.items(), key=lambda kv: (-kv[1], kv[0])) if v[0] in CLASS_DICT]
             if all_top_types:
                 selected_top_type = all_top_types[0][0]
-                children_of_top_types = CLASS_DICT[selected_top_type]
+                children_of_top_types = set(CLASS_DICT[selected_top_type])
                 #add children of top types to the bag of word\
             for each in all_found_types:
                 if each in children_of_top_types and each in type_score_dict:

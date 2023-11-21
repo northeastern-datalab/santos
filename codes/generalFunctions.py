@@ -152,3 +152,34 @@ def readJson(filename):
         df_transposed = df_transposed[1:]
         #df_transposed.columns = new_header
     return df_transposed
+
+def read_csv_file(gen_file):
+    data = []
+    try:
+        data = pd.read_csv(gen_file, lineterminator='\n', low_memory=False)
+        if data.shape[1] < 2:
+            data = pd.read_csv(gen_file, sep='|')
+    except:
+        try:
+            data = pd.read_csv(gen_file, sep='|')
+        except:
+            with open(gen_file) as curr_csv:
+                curr_data = curr_csv.read().splitlines()
+                curr_data = [len(row.split('|')) for row in curr_data]
+                max_col_num = 0
+                if len(curr_data) != 0:
+                    max_col_num = max(curr_data)
+                try:
+                    if max_col_num != 0:
+                        df = pd.read_csv(gen_file, sep='|', header=None, names=range(max_col_num), low_memory=False)
+                        data = df
+                        return data
+                    else:
+                        df = pd.read_csv(gen_file, lineterminator='\n', low_memory=False)
+                        data = df
+                        return data
+                except:
+                    df = pd.read_csv(gen_file, lineterminator='\n', low_memory=False)
+                    data = df
+                    return data
+    return data

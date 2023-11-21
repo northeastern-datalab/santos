@@ -61,8 +61,8 @@ def createRelationSemanticsLookupTable(filenames, FDDs):
                                 #assign relation semantic to each value pairs of i and j
                                 for k in range(0, projectedRowsNum):
                                     #extract subject and object
-                                    sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k][0]).lower())
-                                    obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k][1]).lower())
+                                    sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k, 0]).lower())
+                                    obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k, 1]).lower())
                                     #print(sub)
                                     #print(obj)
                                     subNull = genFunc.checkIfNullString(sub)
@@ -257,8 +257,8 @@ def createRelationSemanticsSynthKB(lookupTable, filenames, FDDs):
                                 #assign relation semantic to each value pairs of i and j
                                 for k in range(0,projectedRowsNum):
                                     #extract subject and object
-                                    sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k][0]).lower())
-                                    obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k][1]).lower())
+                                    sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k,0]).lower())
+                                    obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k,1]).lower())
                                     subNull = genFunc.checkIfNullString(sub)
                                     objNull = genFunc.checkIfNullString(obj)
                                     if subNull != 0 and objNull != 0:
@@ -274,8 +274,8 @@ def createRelationSemanticsSynthKB(lookupTable, filenames, FDDs):
                                 for k in range(0,projectedRowsNum):
                                     temp = {}
                                     #extract subject and object
-                                    sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k][0]).lower())
-                                    obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k][1]).lower())
+                                    sub = genFunc.preprocessString(str(dataFrameTemp.iloc[k,0]).lower())
+                                    obj = genFunc.preprocessString(str(dataFrameTemp.iloc[k,1]).lower())
                                     subNull = genFunc.checkIfNullString(sub)
                                     objNull = genFunc.checkIfNullString(obj)
                                     if subNull != 0 and objNull != 0:
